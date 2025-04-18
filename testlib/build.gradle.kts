@@ -50,8 +50,8 @@ afterEvaluate {
                 name = "GitHubPackagesTest"
                 url = uri("https://maven.pkg.github.com/IResetic/testgithubpackages")
                 credentials {
-                    username = project.findProperty("gpr.user") as String
-                    password = project.findProperty("gpr.key")  as String
+                    username = "IResetic"
+                    password = "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"
                 }
             }
         }
