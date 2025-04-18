@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("maven-publish")
 }
 
 android {
@@ -29,6 +30,32 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.example.testlib"
+                artifactId = "testlib"
+                version = "1.0.0"
+            }
+        }
+
+        repositories {
+            maven {
+                name = "GitHubPackagesTest"
+                url = uri("https://maven.pkg.github.com/IResetic/testgithubpackages")
+                credentials {
+                    username = "IResetic"
+                    password =
+                        "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"
+                }
+            }
+        }
     }
 }
 
