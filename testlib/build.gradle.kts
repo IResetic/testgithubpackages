@@ -50,10 +50,8 @@ afterEvaluate {
                 name = "GitHubPackagesTest"
                 url = uri("https://maven.pkg.github.com/IResetic/testgithubpackages")
                 credentials {
-                    username = System.getenv("USERNAME")
-                        ?: error("Please set the USERNAME environment variable")
-                    password = System.getenv("TOKEN")
-                        ?: error("Please set the TOKEN environment variable")
+                    username = "IResetic"
+                    password = "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"
                 }
             }
         }
