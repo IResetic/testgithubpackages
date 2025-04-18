@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.testlib"
+    namespace = "com.example.statistictest"
     compileSdk = 34
 
     defaultConfig {
@@ -38,8 +38,8 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "com.example.testlib"
-                artifactId = "testlib"
+                groupId = "com.example.statistictest"
+                artifactId = "statistictest"
                 version = "1.1.0"
             }
         }

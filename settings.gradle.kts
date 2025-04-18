@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "TestGithubPackages"
 include(":app")
 include(":testlib")
+include(":statistictest")
