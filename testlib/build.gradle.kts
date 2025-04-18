@@ -51,7 +51,7 @@ afterEvaluate {
                 url = uri("https://maven.pkg.github.com/IResetic/testgithubpackages")
                 credentials {
                     username = "IResetic"
-                    password = "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"
+                    password = "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"
                 }
             }
         }
