@@ -11,7 +11,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/combine" />
+            <option value="$PROJECT_DIR$/combine/libone" />
+            <option value="$PROJECT_DIR$/multilib" />
             <option value="$PROJECT_DIR$/statistictest" />
+            <option value="$PROJECT_DIR$/test" />
             <option value="$PROJECT_DIR$/testlib" />
           </set>
         </option>
