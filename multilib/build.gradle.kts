@@ -34,8 +34,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":multilib:libone"))
-    implementation(project(":multilib:libtwo"))
+    api(project(":multilib:libone"))
+    api(project(":multilib:libtwo"))
 }
 
 
@@ -46,7 +46,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.example.multilib"
                 artifactId = "multilib"
-                version = "1.0.0"
+                version = "1.1.0"
             }
         }
 

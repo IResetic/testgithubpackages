@@ -1,0 +1,113 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.example.multilib",
+    "module": "multilib",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.9"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "android",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.0.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "multilib-1.0.0.aar",
+          "url": "multilib-1.0.0.aar",
+          "size": 779,
+          "sha512": "3d8edef85b89869a081e6120d455cb19d1cc6466fd0a1e55f5988e2eaeff284f6aaca84d0294cd7b8b25ecd38456cd164181f41725f7559133397064781d5771",
+          "sha256": "2009aeb2db3cb444200817bf7a82fa45389813d4718d25ecc044e1863fc3311c",
+          "sha1": "18ca3c658aa27768c6ce073686715994f0bee8a3",
+          "md5": "4d73ea60da6cb177f2a7cceea16dde35"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimeElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "android",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "dependencies": [
+        {
+          "group": "TestGithubPackages.multilib",
+          "module": "libone",
+          "version": {
+            "requires": "unspecified"
+          }
+        },
+        {
+          "group": "TestGithubPackages.multilib",
+          "module": "libtwo",
+          "version": {
+            "requires": "unspecified"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.0.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "multilib-1.0.0.aar",
+          "url": "multilib-1.0.0.aar",
+          "size": 779,
+          "sha512": "3d8edef85b89869a081e6120d455cb19d1cc6466fd0a1e55f5988e2eaeff284f6aaca84d0294cd7b8b25ecd38456cd164181f41725f7559133397064781d5771",
+          "sha256": "2009aeb2db3cb444200817bf7a82fa45389813d4718d25ecc044e1863fc3311c",
+          "sha1": "18ca3c658aa27768c6ce073686715994f0bee8a3",
+          "md5": "4d73ea60da6cb177f2a7cceea16dde35"
+        }
+      ]
+    },
+    {
+      "name": "releaseSourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.jvm.environment": "android",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "files": [
+        {
+          "name": "multilib-1.0.0-sources.jar",
+          "url": "multilib-1.0.0-sources.jar",
+          "size": 261,
+          "sha512": "1487e5a20c9e4d74f298e07c42e96a61be11b7a768c3fbc199ee138cd68e1fc2267d1cfe3f11f288acc05df755315344d052cc5f6f751f126ab4fe1caa5125ea",
+          "sha256": "c6deada2fac53b8ea6523dbda77597b128006674616f140f04df23264c6d1aa3",
+          "sha1": "2ad14aed781c4a73ed4dbb421966d408a0a06686",
+          "md5": "f43436d6bec321290f6af228ad602604"
+        }
+      ]
+    }
+  ]
+}
