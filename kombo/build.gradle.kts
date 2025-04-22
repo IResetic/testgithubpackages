@@ -53,7 +53,11 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.example"
                 artifactId = "kombo"
-                version = "3.0.0"
+                version = "3.1.0"
+                
+                // Include submodules in the publication
+                artifact(tasks.getByName("bundleReleaseAar"))
+                artifact(tasks.getByName("sourcesJar"))
             }
         }
         repositories {
@@ -62,9 +66,15 @@ afterEvaluate {
                 url = uri("https://maven.pkg.github.com/IResetic/testgithubpackages")
                 credentials {
                     username = project.findProperty("gpr.user") as String
-                    password = project.findProperty("gpr.key")  as String
+                    password = project.findProperty("gpr.key") as String
                 }
             }
         }
     }
+}
+
+// Create sources jar task
+tasks.register("sourcesJar", Jar::class) {
+    archiveClassifier.set("sources")
+    from(android.sourceSets.getByName("main").java.srcDirs)
 }
