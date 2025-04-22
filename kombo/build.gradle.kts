@@ -53,6 +53,10 @@ val sourcesJar by tasks.registering(Jar::class) {
 }
 
 afterEvaluate {
+    tasks.named("generateMetadataFileForReleasePublication") {
+        dependsOn(sourcesJar)
+    }
+
     publishing {
         publications {
             create<MavenPublication>("release") {
