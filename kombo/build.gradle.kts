@@ -31,12 +31,6 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-        }
-    }
 }
 
 dependencies {
@@ -46,79 +40,26 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    
+    // Include submodules
+    api(project(":kombo:one"))
+    api(project(":kombo:two"))
 }
 
-val assembleFatAar = tasks.register<Zip>("assembleFatAar") {
-    group = "build"
-    description = "Creates a single fat-parent.aar by merging submodule AARs"
-
-    // ← ADD THIS:
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-
-    dependsOn(":kombo:one:assembleRelease", ":kombo:two:assembleRelease")
-
-    archiveBaseName.set("fat-parent")
-    archiveExtension.set("aar")
-
-    // 2) Unzip each submodule AAR
-    from(zipTree(project(":kombo:one").buildDir.resolve("outputs/aar/${project(":kombo:one").name}-release.aar")))
-    from(zipTree(project(":kombo:two").buildDir.resolve("outputs/aar/${project(":kombo:two").name}-release.aar")))
-
-    // 3) Include your parent’s AndroidManifest, resources, JNI, etc.
-    from("src/main/AndroidManifest.xml")
-    from("src/main/res") { into("res") }
-    from("src/main/jni") { into("jni") }
-}
-
-
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                // use our zip task as the AAR artifact
-                artifact(assembleFatAar) {
-                    builtBy(assembleFatAar)
-                }
-                // sourcesJar is added automatically by withSourcesJar()
-
-                groupId    = "com.github.YOUR_USER"
-                artifactId = "fat-parent"
-                version    = "2.2.0"
-
-                // tell Maven this is an AAR, not a plain jar
-                pom.withXml {
-                    asNode().appendNode("packaging", "aar")
-                }
-            }
-        }
-        repositories {
-            maven {
-                name = "GitHubPackagesTest"
-                url  = uri("https://maven.pkg.github.com/IResetic/testgithubpackages")
-                credentials {
-                    username = project.findProperty("gpr.user") as String
-                    password = project.findProperty("gpr.key")  as String
-                }
-            }
-        }
-    }
-}
-
-/*
 afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId    = "com.github.kombo"
+                groupId = "com.example"
                 artifactId = "kombo"
-                version    = "2.0.0"
+                version = "3.0.0"
             }
         }
         repositories {
             maven {
-                name = "GitHubPackagesTest"
-                url  = uri("https://maven.pkg.github.com/IResetic/testgithubpackages")
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/YOUR_GITHUB_USERNAME/TestGithubPackages")
                 credentials {
                     username = project.findProperty("gpr.user") as String
                     password = project.findProperty("gpr.key")  as String
@@ -127,30 +68,3 @@ afterEvaluate {
         }
     }
 }
-*/
-
-/*
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
-                groupId = "com.example.kombo"
-                artifactId = "kombo"
-                version = "1.2.0"
-            }
-        }
-
-        repositories {
-            maven {
-                name = "GitHubPackagesTest"
-                url  = uri("https://maven.pkg.github.com/IResetic/testgithubpackages")
-                credentials {
-                    username = project.findProperty("gpr.user") as String
-                    password = project.findProperty("gpr.key")  as String
-                }
-            }
-        }
-    }
-}
-*/
