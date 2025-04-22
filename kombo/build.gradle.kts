@@ -83,7 +83,7 @@ afterEvaluate {
 
                 groupId    = "com.github.YOUR_USER"
                 artifactId = "fat-parent"
-                version    = "2.1.0"
+                version    = "2.2.0"
 
                 // tell Maven this is an AAR, not a plain jar
                 pom.withXml {
