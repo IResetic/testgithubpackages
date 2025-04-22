@@ -53,7 +53,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.example.kombo"
                 artifactId = "kombo"
-                version = "1.1.0"
+                version = "1.2.0"
             }
         }
 
