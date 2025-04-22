@@ -14,6 +14,8 @@
             <option value="$PROJECT_DIR$/combine" />
             <option value="$PROJECT_DIR$/combine/libone" />
             <option value="$PROJECT_DIR$/multilib" />
+            <option value="$PROJECT_DIR$/multilib/libone" />
+            <option value="$PROJECT_DIR$/multilib/libtwo" />
             <option value="$PROJECT_DIR$/statistictest" />
             <option value="$PROJECT_DIR$/test" />
             <option value="$PROJECT_DIR$/testlib" />

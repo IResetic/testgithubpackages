@@ -34,8 +34,8 @@ android {
 }
 
 dependencies {
-    implementation(project("libone"))
-    implementation(project("libtwo"))
+    implementation(project(":multilib:libone"))
+    implementation(project(":multilib:libtwo"))
 }
 
 
