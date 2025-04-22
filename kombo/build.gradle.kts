@@ -50,16 +50,17 @@ afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
-                from(components["release"])
                 groupId = "com.example"
                 artifactId = "kombo"
                 version = "3.1.0"
                 
-                // Add sources jar
-                artifact(tasks.register("sourcesJar", Jar::class) {
-                    archiveClassifier.set("sources")
-                    from(android.sourceSets.getByName("main").java.srcDirs)
-                })
+                // Publish the AAR
+                artifact("$buildDir/outputs/aar/${project.name}-release.aar")
+                
+                // Publish the sources
+                artifact(android.sourceSets.getByName("main").java.srcDirs) {
+                    classifier = "sources"
+                }
             }
         }
         repositories {
