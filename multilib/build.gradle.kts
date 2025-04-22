@@ -46,7 +46,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.example.multilib"
                 artifactId = "multilib"
-                version = "1.3.0"
+                version = "1.4.0"
             }
         }
 
