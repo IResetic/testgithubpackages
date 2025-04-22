@@ -46,6 +46,12 @@ dependencies {
     api(project(":kombo:two"))
 }
 
+// Create sources jar task
+val sourcesJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("sources")
+    from(android.sourceSets.getByName("main").java.srcDirs)
+}
+
 afterEvaluate {
     publishing {
         publications {
@@ -55,9 +61,8 @@ afterEvaluate {
                 artifactId = "kombo"
                 version = "3.1.0"
                 
-                // Include submodules in the publication
-                artifact(tasks.getByName("bundleReleaseAar"))
-                artifact(tasks.getByName("sourcesJar"))
+                // Add sources jar to the publication
+                artifact(sourcesJar.get())
             }
         }
         repositories {
@@ -71,10 +76,4 @@ afterEvaluate {
             }
         }
     }
-}
-
-// Create sources jar task
-tasks.register("sourcesJar", Jar::class) {
-    archiveClassifier.set("sources")
-    from(android.sourceSets.getByName("main").java.srcDirs)
 }
