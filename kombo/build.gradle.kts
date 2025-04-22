@@ -49,6 +49,12 @@ dependencies {
 }
 
 val assembleFatAar = tasks.register<Zip>("assembleFatAar") {
+    group = "build"
+    description = "Creates a single fat-parent.aar by merging submodule AARs"
+
+    // ← ADD THIS:
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
     dependsOn(":kombo:one:assembleRelease", ":kombo:two:assembleRelease")
 
     archiveBaseName.set("fat-parent")
