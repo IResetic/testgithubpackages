@@ -58,8 +58,8 @@ afterEvaluate {
         }
         repositories {
             maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/YOUR_GITHUB_USERNAME/TestGithubPackages")
+                name = "GitHubPackagesTest"
+                url = uri("https://maven.pkg.github.com/IResetic/testgithubpackages")
                 credentials {
                     username = project.findProperty("gpr.user") as String
                     password = project.findProperty("gpr.key")  as String
