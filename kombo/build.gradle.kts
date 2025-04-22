@@ -53,7 +53,7 @@ val sourcesJar by tasks.registering(Jar::class) {
 }
 
 afterEvaluate {
-    tasks.named("generateMetadataFileForReleasePublication") {
+    tasks.named("publishReleasePublicationToGitHubPackagesTestRepository") {
         dependsOn(sourcesJar)
     }
 
