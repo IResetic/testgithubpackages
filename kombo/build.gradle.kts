@@ -46,17 +46,7 @@ dependencies {
     api(project(":kombo:two"))
 }
 
-// Create sources jar task
-val sourcesJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("sources")
-    from(android.sourceSets.getByName("main").java.srcDirs)
-}
-
 afterEvaluate {
-    tasks.named("publishReleasePublicationToGitHubPackagesTestRepository") {
-        dependsOn(sourcesJar)
-    }
-
     publishing {
         publications {
             create<MavenPublication>("release") {
@@ -65,8 +55,11 @@ afterEvaluate {
                 artifactId = "kombo"
                 version = "3.1.0"
                 
-                // Add sources jar to the publication
-                artifact(sourcesJar.get())
+                // Add sources jar
+                artifact(tasks.register("sourcesJar", Jar::class) {
+                    archiveClassifier.set("sources")
+                    from(android.sourceSets.getByName("main").java.srcDirs)
+                })
             }
         }
         repositories {
