@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.example.multilib</groupId>
   <artifactId>multilib</artifactId>
-  <version>1.3.0</version>
+  <version>1.4.0</version>
   <packaging>aar</packaging>
   <dependencies>
     <dependency>
